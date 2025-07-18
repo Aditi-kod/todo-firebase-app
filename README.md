@@ -1,50 +1,129 @@
-# Welcome to your Expo app 👋
+#  React Native To-Do App with Firebase
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple and intuitive **To-Do List mobile app** built using **React Native (Expo)** and **Firebase**. This app allows users to register, log in, add tasks, mark them as complete, and delete them — with real-time updates and a user profile screen.
 
-## Get started
 
-1. Install dependencies
+##  Features
 
-   ```bash
-   npm install
-   ```
+-  **Firebase Authentication**
+  - Register and log in with email/password
 
-2. Start the app
+-  **Add, View, and Delete Tasks**
+  - Real-time sync using **Firestore**
+  - Strike-through completed tasks
+  - Delete tasks instantly
 
-   ```bash
-   npx expo start
-   ```
+-  **User Profile Screen**
+  - Displays email and profile image
+  - Option to log out
+  - Profile image stored using **Firebase Storage**
 
-In the output, you'll find options to open the app in a
+-  **Live Updates**
+  - All changes reflect instantly without needing to reload
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🛠 Tech Stack
 
-## Get a fresh project
+- **React Native (Expo)**
+- **Firebase**
+  - Authentication
+  - Firestore (Database)
+  - Storage
+- **Expo Router (Navigation)**
+- **Styled using React Native Stylesheets**
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
+##  Screenshots
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+| Login/Register | To-Do List | Profile |
+|----------------|------------|---------|
+|  Coming soon |  Coming soon |  Coming soon |
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
+##  Folder Structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+to-do-app
+|
+todo-firebase-app/
+├── assets/
+├── screens/
+│ ├── LoginScreen.js
+│ ├── RegisterScreen.js
+│ ├── TodoScreen.js
+│ └── ProfileScreen.js
+├── firebase.js
+├── App.js
+├── .gitignore
+├── package.json
+└── README.md
 
-## Join the community
 
-Join our community of developers creating universal apps.
+##  Firebase Setup (Important)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+To connect your app with Firebase:
+
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a project and enable:
+   - Authentication (Email/Password)
+   - Firestore Database
+   - Storage
+3. Replace the Firebase config in `firebase.js` with your own
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+
+## Set Firestore Rules:
+
+js
+Copy
+Edit
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /todos/{docId} {
+      allow read, write: if request.auth != null;
+    }
+    match /users/{userId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+
+##  How to Run
+
+# 1. Clone the repository
+git clone https://github.com/Aditi-code/todo-firebase-app.git
+cd todo-firebase-app
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the Expo app
+npx expo start
+Use Android emulator or scan the QR code with Expo Go on your mobile to test.
+
+##  Demo Video
+https://drive.google.com/file/d/139rJf14HRuNUbAlY8u3mhxz-GrB2RHc0/view?usp=drive_link
+
+##  About Me
+Aditi Kumari
+Full-stack developer & tech enthusiast 
+https://github.com/Aditi-kod
+
+## License
+This project is open source and free to use under the MIT License.
+
+
+
+
+
+
+
