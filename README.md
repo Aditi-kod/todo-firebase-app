@@ -23,7 +23,7 @@ A simple and intuitive **To-Do List mobile app** built using **React Native (Exp
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **React Native (Expo)**
 - **Firebase**
